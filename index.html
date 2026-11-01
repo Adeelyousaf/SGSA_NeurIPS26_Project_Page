@@ -358,7 +358,7 @@
             <h3 class="concept-title">One guide, two stages</h3>
             <p>An MLRM's target has a reasoning trace $z$ and a final response $y$. Under a single guide, generation factorizes as</p>
             <div class="eq">$$q_\phi^{g}(z, y \mid x) = p_{\theta_0}\big(z \mid x, g(x)\big)\, p_{\theta_0}\big(y \mid x, z, g(x)\big)$$</div>
-            <p class="concept-note">The same guide conditions both factors, but it need not make both safe. Safety-aware reasoning can still end in an unsafe answer, and a guided answer can sit on top of unsafe reasoning.</p>
+            <p class="concept-note">The same guide shapes both the reasoning and the answer, but it does not make them equally safe. Safety-aware reasoning can still end in an unsafe answer, and a safe answer can still follow unsafe reasoning.</p>
           </div>
         </div>
 
