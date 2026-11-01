@@ -1,0 +1,1240 @@
+/* House palette. The structure mirrors the SAGE (ECCV 2026) page; the accent
+   gradient is re-tinted toward the NeurIPS purple. */
+:root {
+  --accent-1: #7446c4;
+  --accent-2: #d9468f;
+  --accent-3: #2f8fe8;
+  --accent-gradient: linear-gradient(120deg, var(--accent-1) 0%, var(--accent-2) 52%, var(--accent-3) 100%);
+  --good: #0f9d58;
+  --bad: #d93025;
+  --ink: #1b1f27;
+  --ink-soft: #3c4350;
+  --ink-muted: #5a6270;
+  --line: #e7e9ee;
+  --panel: #f6f8fc;
+}
+
+/* Bulma bases everything on a 16px root; nudge it up so the whole page reads
+   a little larger. Sizes below are in rem, so they scale with it. */
+html {
+  font-size: 17.5px;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: 'Noto Sans', sans-serif;
+  color: #222;
+  background: #ffffff;
+}
+
+.footer .icon-link {
+  font-size: 25px;
+  color: #000;
+  margin: 0 0.45rem;
+}
+
+.link-block a {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* Make every hero-link glyph read at the same large, legible size. */
+.publication-links .button {
+  font-size: 1.05rem;
+  padding-left: 1.15em;
+  padding-right: 1.15em;
+}
+
+.publication-links .button .icon {
+  height: 1.6em;
+  width: 1.6em;
+  margin-right: 0.35em;
+}
+
+.publication-links .button .icon i {
+  font-size: 1.45em;
+  line-height: 1;
+}
+
+.publication-links .button .icon img {
+  height: 1.5em !important;
+  width: auto;
+}
+
+.publication-links .button .fa-youtube {
+  color: #ff0000;
+}
+
+.publication-links .button .fa-file-pdf {
+  color: #ff5c5c;
+}
+
+/* Links that are not live yet (arXiv, dataset, video, poster). The button
+   keeps its place in the row so nothing shifts when the URL is filled in. */
+.publication-links .button.is-soon {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.publication-links .button.is-soon:hover {
+  background-color: #363636;
+  transform: none;
+}
+
+.soon-tag {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-left: 0.5em;
+  padding: 0.18em 0.55em;
+  text-transform: uppercase;
+}
+
+.publication-title {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 3rem;
+  line-height: 1.15;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1180px;
+  /* Even out the two lines rather than leaving a short orphan. */
+  text-wrap: balance;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.publication-authors {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors a {
+  color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+  text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+/* Hero top rail: internship sticker on the left, NeurIPS mark on the right,
+   sitting above the title rather than crowding it. */
+.hero-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.4rem;
+  min-height: 122px;
+}
+
+.hero-logo-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  transition: transform 0.2s ease;
+}
+
+.hero-logo-link:hover {
+  transform: translateY(-2px);
+}
+
+.hero-logo {
+  display: block;
+  width: 196px;
+  height: auto;
+}
+
+.hero-logo-meta {
+  color: #5b4a7a;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Starburst sticker that blinks hard on/off. */
+.sticker-star {
+  width: 122px;
+  height: 122px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(150deg, #ff3860 0%, #ff7a18 100%);
+  clip-path: polygon(50.0% 0.0%, 59.6% 14.3%, 75.0% 6.7%, 76.2% 23.8%, 93.3% 25.0%, 85.7% 40.4%, 100.0% 50.0%, 85.7% 59.6%, 93.3% 75.0%, 76.2% 76.2%, 75.0% 93.3%, 59.6% 85.7%, 50.0% 100.0%, 40.4% 85.7%, 25.0% 93.3%, 23.8% 76.2%, 6.7% 75.0%, 14.3% 59.6%, 0.0% 50.0%, 14.3% 40.4%, 6.7% 25.0%, 23.8% 23.8%, 25.0% 6.7%, 40.4% 14.3%);
+  transform: rotate(-8deg);
+  animation: sticker-blink 1.4s steps(1, end) infinite;
+}
+
+.sticker-star span {
+  display: block;
+  width: 74%;
+  color: #ffffff;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@keyframes sticker-blink {
+  0%, 62%      { opacity: 1; }
+  62.01%, 100% { opacity: 0.12; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticker-star {
+    animation: none;
+  }
+}
+
+/* Animated venue badge: the gradient drifts, a sheen sweeps across, and the
+   glow pulses between the two ends of the palette. */
+.publication-venue {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  color: #ffffff;
+  background: linear-gradient(110deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-1));
+  background-size: 300% 100%;
+  border-radius: 999px;
+  font-size: 1.45rem;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  padding: 0.6rem 1.4rem;
+  width: fit-content;
+  font-weight: 800;
+  margin: 0.9rem auto 1.1rem;
+  text-shadow: 0 1px 3px rgba(10, 10, 10, 0.22);
+  animation: venue-shift 8s linear infinite, venue-glow 3.2s ease-in-out infinite;
+}
+
+.publication-venue::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 35%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-20deg);
+  animation: venue-sheen 4.5s ease-in-out infinite;
+}
+
+@keyframes venue-shift {
+  to { background-position: 300% 50%; }
+}
+
+@keyframes venue-glow {
+  0%, 100% { box-shadow: 0 8px 22px rgba(116, 70, 196, 0.32); }
+  50%      { box-shadow: 0 12px 34px rgba(47, 143, 232, 0.42); }
+}
+
+@keyframes venue-sheen {
+  0%        { left: -60%; }
+  55%, 100% { left: 130%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .publication-venue {
+    animation: none;
+    box-shadow: 0 10px 24px rgba(116, 70, 196, 0.24);
+  }
+
+  .publication-venue::after {
+    animation: none;
+    display: none;
+  }
+}
+
+.publication-video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: 10px !important;
+}
+
+.publication-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+#video .publication-video {
+  box-shadow: 0 14px 34px rgba(10, 10, 10, 0.12);
+}
+
+.publication-figure {
+  margin: 0 auto 2.5rem;
+}
+
+.publication-figure img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.publication-figure figcaption,
+.table-caption {
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin-top: 0.9rem;
+  text-align: justify;
+}
+
+/* Lead caption: short enough to read at a glance, so it carries more weight
+   than the standard figure caption. */
+.caption-lead {
+  color: #22262e !important;
+  font-size: 1.12rem !important;
+  line-height: 1.65 !important;
+  margin-top: 1.2rem !important;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center !important;
+}
+
+.caption-lead strong {
+  color: var(--ink);
+}
+
+.caption-note {
+  color: var(--ink-muted);
+  display: block;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+}
+
+/* Emphasis spans, used in captions throughout. */
+.bad {
+  color: var(--bad);
+  font-weight: 700;
+}
+
+.good {
+  color: var(--good);
+  font-weight: 700;
+}
+
+/* Table captions read like the lead figure captions: centered, a touch larger,
+   and matched to the table width. */
+.table-caption {
+  font-size: 1.02rem !important;
+  line-height: 1.6 !important;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 860px;
+  text-align: center !important;
+}
+
+.method-figure {
+  max-width: 900px;
+}
+
+/* House style for section headings: the palette gradient fill with a
+   sweeping accent rule beneath, sized to the text. */
+.section-heading {
+  font-size: 2.15rem !important;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  width: fit-content;
+  margin-bottom: 1.6rem !important;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-wrap: balance;
+}
+
+.section-heading--center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.section-heading::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 5px;
+  margin-top: 0.55rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-2), var(--accent-1));
+  background-size: 250% 100%;
+  animation: heading-sweep 4s ease-in-out infinite;
+}
+
+/* The section carrying the paper's central claim leads the hierarchy. */
+.lead-heading {
+  font-size: 2.6rem !important;
+}
+
+@keyframes heading-sweep {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-heading::after {
+    animation: none;
+  }
+}
+
+.subsection-heading {
+  color: var(--ink);
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin: 2.6rem 0 1.1rem;
+  text-align: center;
+}
+
+/* Poster-style takeaway bar, one line under each block of evidence. */
+.takeaway {
+  background: #fadd92;
+  border-radius: 8px;
+  color: #4b3a11;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-top: 1.1rem;
+  padding: 0.85rem 1.2rem;
+  text-align: center;
+}
+
+/* Two cards that answer the same question in opposite directions: green for
+   what ASR suggests, red for what over-refusal reveals. */
+.contrast-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 2rem 0;
+}
+
+.contrast-card {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent-2);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(10, 10, 10, 0.06);
+  padding: 1.1rem 1.2rem;
+}
+
+.contrast-card--suggest {
+  border-left-color: var(--good) !important;
+}
+
+.contrast-card--reveal {
+  border-left-color: var(--bad) !important;
+}
+
+.contrast-card .title {
+  margin-bottom: 0.5rem;
+}
+
+.contrast-card p {
+  color: #333;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ---------- Interactive ORR / ASR trade-off chart ---------- */
+
+.tradeoff {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(10, 10, 10, 0.07);
+  margin: 0 auto;
+  max-width: 820px;
+  padding: 1rem 1rem 0.6rem;
+  position: relative;
+}
+
+.tradeoff-toolbar {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  justify-content: space-between;
+  padding: 0 0.4rem;
+}
+
+.tradeoff-label {
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tradeoff svg {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.tradeoff .grid-line {
+  stroke: #edeff3;
+  stroke-width: 1;
+}
+
+.tradeoff .axis-line {
+  stroke: #2b2f36;
+  stroke-width: 1.4;
+}
+
+.tradeoff .tick-label {
+  fill: #5a6270;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 13px;
+}
+
+.tradeoff .axis-title {
+  fill: #2b2f36;
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.tradeoff .better-hint {
+  fill: var(--good);
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.tradeoff .point {
+  cursor: pointer;
+  stroke: #ffffff;
+  stroke-width: 2.5;
+}
+
+.tradeoff .point:focus {
+  outline: none;
+}
+
+.tradeoff .point:focus-visible,
+.tradeoff .point.is-hot {
+  stroke: #1b1f27;
+}
+
+.tradeoff .point-label {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  pointer-events: none;
+}
+
+.tradeoff svg.is-narrow .tick-label,
+.tradeoff svg.is-narrow .better-hint {
+  font-size: 11px;
+}
+
+.tradeoff svg.is-narrow .axis-title {
+  font-size: 12px;
+}
+
+.tradeoff svg.is-narrow .point-label {
+  font-size: 12.5px;
+}
+
+.tradeoff-tooltip {
+  background: #1f2430;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(10, 10, 10, 0.25);
+  color: #ffffff;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  opacity: 0;
+  padding: 0.5rem 0.7rem;
+  pointer-events: none;
+  position: absolute;
+  transform: translate(-50%, calc(-100% - 12px));
+  transition: opacity 0.12s ease;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.tradeoff-tooltip.is-visible {
+  opacity: 1;
+}
+
+.tradeoff-tooltip strong {
+  color: #ffffff;
+  display: block;
+}
+
+.tradeoff-summary {
+  color: #2b2f36;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  margin: 0.3rem auto 0.4rem;
+  max-width: 700px;
+  min-height: 3.1em;
+  text-align: center;
+}
+
+/* ---------- Qualitative examples ---------- */
+
+.qual-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0 0 1rem;
+}
+
+.qual-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 10px 26px rgba(10, 10, 10, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  min-width: 0;
+  padding: 1.1rem;
+}
+
+.qual-input {
+  align-items: flex-start;
+  display: flex;
+  gap: 0.9rem;
+}
+
+.qual-input img {
+  border-radius: 8px;
+  flex: none;
+  height: auto;
+  object-fit: cover;
+  width: 30%;
+}
+
+.qual-prompt {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.qual-prompt .qual-quote {
+  color: var(--ink);
+  display: block;
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 700;
+  margin: 0.35rem 0;
+}
+
+.qual-gt {
+  color: var(--good);
+  font-weight: 800;
+}
+
+.qual-response {
+  border-radius: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  margin: 0;
+  padding: 0.75rem 0.85rem;
+}
+
+.qual-response--bad {
+  background: #fdecea;
+  border-left: 4px solid var(--bad);
+}
+
+.qual-response--good {
+  background: #e6f4ea;
+  border-left: 4px solid var(--good);
+}
+
+.qual-response .qual-who {
+  display: block;
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
+
+.qual-response--bad .qual-who {
+  color: #a3241b;
+}
+
+.qual-response--good .qual-who {
+  color: #0b6e3e;
+}
+
+.qual-response b {
+  color: var(--ink);
+}
+
+.qual-response .qual-verdict {
+  display: block;
+  font-weight: 700;
+  margin-top: 0.4rem;
+}
+
+/* ---------- Concept / step cards ---------- */
+
+/* Paired concept cards used by the diagnosis and method sections. */
+.concept-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 1.75rem 0;
+}
+
+.step-grid {
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 1.75rem 0;
+}
+
+/* Let the equation cards break out past the prose column once there is room,
+   so the wider expressions fit without a scrollbar. */
+@media screen and (min-width: 1216px) {
+  .concept-grid,
+  .step-grid {
+    width: calc(100% + 200px);
+    margin-left: -100px;
+    margin-right: -100px;
+  }
+}
+
+.concept-card {
+  /* Grid items default to min-width:auto, which lets a wide equation push the
+     column past the viewport; 0 lets .eq scroll inside instead. */
+  min-width: 0;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-top: 4px solid transparent;
+  border-image: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3)) 1;
+  box-shadow: 0 10px 26px rgba(10, 10, 10, 0.07);
+  padding: 1.3rem 1.4rem;
+}
+
+.concept-title {
+  color: var(--ink);
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.08rem;
+  font-weight: 800;
+  margin: 0 0 0.6rem;
+}
+
+.concept-card p {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.concept-card .desiderata {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  list-style: none;
+  margin: 0.2rem 0 0;
+  padding: 0;
+}
+
+.concept-card .desiderata li {
+  margin: 0 0 0.55rem;
+  padding-left: 1.4rem;
+  position: relative;
+}
+
+.concept-card .desiderata li::before {
+  background: var(--accent-gradient);
+  border-radius: 50%;
+  content: "";
+  height: 0.6rem;
+  left: 0.2rem;
+  position: absolute;
+  top: 0.45rem;
+  width: 0.6rem;
+}
+
+.step-kicker {
+  color: var(--accent-1);
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+}
+
+/* MathJax sizes its SVG output in ex units, so bumping the container's
+   font-size scales the rendered equation. */
+.eq {
+  font-size: 1.22rem;
+  margin: 1.1rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.step-grid .eq {
+  font-size: 1.08rem;
+}
+
+.objective-block .eq {
+  font-size: 1.55rem;
+  margin: 0.2rem 0 0;
+}
+
+/* MathJax gives display math its own 1em top/bottom margin, which stacks with
+   the container's and leaves the box looking half empty. */
+.eq mjx-container[display="true"] {
+  margin: 0 !important;
+}
+
+.concept-note {
+  border-top: 1px solid #eef0f4;
+  color: var(--ink-muted) !important;
+  font-size: 0.88rem !important;
+  margin-top: 0.9rem !important;
+  padding-top: 0.75rem;
+}
+
+.notation {
+  background: var(--panel);
+  border-left: 4px solid var(--accent-1);
+  border-radius: 6px;
+  color: #48505e;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  margin: 0 0 2rem;
+  padding: 0.85rem 1.1rem;
+}
+
+/* Single-guide variants: what each one fixes, and what it breaks. */
+.variant-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 1.5rem 0 2rem;
+}
+
+.variant-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(10, 10, 10, 0.05);
+  min-width: 0;
+  padding: 0.9rem 1rem;
+}
+
+.variant-card h4 {
+  color: var(--ink);
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.98rem;
+  font-weight: 800;
+  margin: 0 0 0.3rem;
+}
+
+.variant-card .variant-what {
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 0 0 0.6rem;
+}
+
+.variant-card .variant-row {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  margin: 0.25rem 0 0;
+}
+
+.variant-card--ours {
+  background: #f4effc;
+  border-color: #d9cbf2;
+}
+
+.objective-block {
+  background: var(--panel);
+  border: 1px solid #e3e8f0;
+  border-radius: 10px;
+  margin: 0 0 2rem;
+  padding: 0.9rem 1.2rem 1.1rem;
+  text-align: center;
+}
+
+.objective-label {
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ---------- Headline numbers ---------- */
+
+.stat-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 1.75rem 0 0.5rem;
+}
+
+.stat-tile {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 10px 26px rgba(10, 10, 10, 0.06);
+  min-width: 0;
+  padding: 1rem 1rem 0.9rem;
+  text-align: center;
+}
+
+.stat-value {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 2.1rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.stat-label {
+  color: var(--ink-soft);
+  display: block;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-top: 0.35rem;
+}
+
+/* ---------- Tables ---------- */
+
+.table-block {
+  margin: 2.25rem 0;
+}
+
+.table-block .table-caption {
+  margin-bottom: 1.1rem;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+/* Shared clean table treatment: no grid lines, dark header, hairline rows. */
+.results-table {
+  font-size: 0.86rem;
+  min-width: 760px;
+  background: #ffffff;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(10, 10, 10, 0.09);
+  font-variant-numeric: tabular-nums;
+}
+
+.compact-table .results-table {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 820px;
+  min-width: 520px;
+}
+
+.results-table thead th {
+  background: #2b2f36;
+  border: none;
+  color: #ffffff;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.7rem 0.55rem;
+  text-transform: uppercase;
+}
+
+/* Second header row: the column-group labels sit above it. */
+.results-table thead tr.group-head th {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  color: #d9dce3;
+  font-size: 0.7rem;
+  padding-bottom: 0.45rem;
+}
+
+.results-table thead tr.group-head th[colspan] {
+  color: #ffffff;
+}
+
+.results-table tbody th,
+.results-table tbody td {
+  background: #ffffff;
+  border: none;
+  border-top: 1px solid #edeff3;
+  color: #444b57;
+  padding: 0.6rem 0.55rem;
+}
+
+.results-table tbody tr:first-child th,
+.results-table tbody tr:first-child td {
+  border-top: none;
+}
+
+.results-table tbody th {
+  color: #1f2430;
+  font-weight: 700;
+}
+
+.results-table tbody tr:hover th,
+.results-table tbody tr:hover td {
+  background: var(--panel);
+}
+
+/* :not([align]) matches Bulma's own `table td:not([align])` reset, which
+   would otherwise outrank a plain class selector and left-align the numbers. */
+.results-table th:not([align]),
+.results-table td:not([align]) {
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.results-table th:first-child,
+.results-table td:first-child {
+  text-align: left;
+}
+
+/* Averages carry the comparison, so they get a little extra weight. */
+.results-table .avg-col {
+  color: #1f2430;
+  font-weight: 700;
+}
+
+/* Our method's row stays legible against the lighter table. */
+.ours-row th,
+.ours-row td,
+.results-table tbody tr.ours-row:hover th,
+.results-table tbody tr.ours-row:hover td {
+  background-color: #f1ebfb !important;
+  border-top: 1px solid #ddcff4;
+  color: #2e1d57;
+  font-weight: 700;
+}
+
+.delta {
+  border-radius: 999px;
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  margin-left: 0.3rem;
+  padding: 0.08rem 0.45rem;
+}
+
+.delta--good {
+  background: #dff3e7;
+  color: #0b6e3e;
+}
+
+/* ---------- Poster, BibTeX ---------- */
+
+.poster-link {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 14px 34px rgba(10, 10, 10, 0.10);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.poster-link:hover {
+  box-shadow: 0 18px 44px rgba(10, 10, 10, 0.18);
+  transform: translateY(-2px);
+}
+
+.poster-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.poster-actions {
+  margin-top: 1.25rem;
+}
+
+.bibtex-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+/* Bulma's `.content pre` turns wrapping off; long titles should wrap rather
+   than hide behind a horizontal scrollbar. */
+.content .bibtex-block pre {
+  border-radius: 10px;
+  overflow-x: visible;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.copy-button {
+  background: #ffffff;
+  border: 1px solid #d5d9e2;
+  border-radius: 999px;
+  color: #2b2f36;
+  cursor: pointer;
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.copy-button:hover {
+  background: var(--panel);
+  border-color: #b9bfcc;
+}
+
+.copy-button.is-copied {
+  border-color: var(--good);
+  color: var(--good);
+}
+
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ---------- Small screens ---------- */
+
+@media screen and (max-width: 1023px) {
+  .variant-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .step-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .publication-title {
+    font-size: 2rem !important;
+  }
+
+  .publication-figure figcaption,
+  .table-caption {
+    font-size: 0.9rem;
+    text-align: left;
+  }
+
+  .contrast-grid,
+  .concept-grid,
+  .qual-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eq {
+    font-size: 1.05rem;
+  }
+
+  .objective-block .eq {
+    font-size: 1.1rem;
+  }
+
+  .section-heading {
+    font-size: 1.75rem !important;
+  }
+
+  .lead-heading {
+    font-size: 2rem !important;
+  }
+
+  .hero-topbar {
+    min-height: 0;
+    margin-bottom: 1rem;
+  }
+
+  .hero-logo {
+    width: 120px;
+  }
+
+  .hero-logo-meta {
+    font-size: 0.55rem;
+  }
+
+  .sticker-star {
+    width: 84px;
+    height: 84px;
+  }
+
+  .sticker-star span {
+    font-size: 0.54rem;
+  }
+
+  .tradeoff {
+    padding: 0.8rem 0.5rem 0.5rem;
+  }
+
+  .tradeoff-toolbar {
+    justify-content: center;
+  }
+
+  .stat-value {
+    font-size: 1.7rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .variant-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .qual-input {
+    flex-direction: column;
+  }
+
+  .qual-input img {
+    width: 45%;
+  }
+}

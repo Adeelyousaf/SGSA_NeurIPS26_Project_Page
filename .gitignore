@@ -1,0 +1,6 @@
+.DS_Store
+.idea
+.claude/
+
+# Camera-ready LaTeX sources (include drafts that must not be published)
+*.zip
