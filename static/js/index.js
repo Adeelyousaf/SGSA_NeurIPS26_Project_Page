@@ -9,22 +9,25 @@
   // LLaVA-CoT. ORR: mean of MMSafetyAware and MOSSBench. ASR: mean of FigStep
   // and JailbreakV-28K Mini. Both in %, lower is better.
   var POINTS = {
-    base:    { orr: 30.7, asr: 58.1 },
-    vlguard: { orr: 97.4, asr: 0.5 },
-    msr:     { orr: 59.6, asr: 11.7 },
-    tis:     { orr: 71.7, asr: 2.8 },
-    ours:    { orr: 55.9, asr: 1.7 }
+    base: { orr: 30.7, asr: 58.1 },
+    tis:  { orr: 71.7, asr: 2.8 },
+    ours: { orr: 55.9, asr: 1.7 }
   };
 
   var METHODS = [
-    { key: 'vlguard', name: 'VLGuard', full: 'VLGuard', color: '#c0392b' },
-    { key: 'tis', name: 'TIS', full: 'Think-in-Safety (TIS)', color: '#e08a1e' },
-    { key: 'msr', name: 'MSR-Align', full: 'MSR-Align', color: '#8e5bb5' },
+    { key: 'tis', name: 'TIS', full: 'Think-in-Safety (TIS)', color: '#c94a3b' },
     { key: 'ours', name: 'SGSA (Ours)', full: 'SGSA (Ours)', color: '#1a9e75' },
     { key: 'base', name: 'Base model', full: 'Base model', color: '#85857e' }
   ];
 
-  var X_RANGE = { min: 25, max: 100 };
+  // Callouts from the paper's teaser, anchored in data coordinates (box
+  // centre). Drawn on wide layouts only; phones get the caption instead.
+  var CALLOUTS = [
+    { orr: 70.5, asr: 37, tone: 'bad', lines: ['ASR reduction comes at', 'the cost of higher ORR'] },
+    { orr: 38.5, asr: 15, tone: 'good', lines: ['SGSA improves the', 'ORR\u2013ASR trade-off'] }
+  ];
+
+  var X_RANGE = { min: 25, max: 80 };
   var Y_RANGE = { min: -10, max: 64 };
 
   // The chart is drawn at the container's real pixel width (viewBox width ==
@@ -39,7 +42,7 @@
       narrow: narrow, w: w, h: h, m: m,
       pw: w - m.l - m.r,
       ph: h - m.t - m.b,
-      xTicks: narrow ? [30, 50, 70, 90] : [30, 40, 50, 60, 70, 80, 90, 100],
+      xTicks: narrow ? [30, 40, 50, 60, 70, 80] : [30, 40, 50, 60, 70, 80],
       yTicks: narrow ? [0, 20, 40, 60] : [0, 10, 20, 30, 40, 50, 60],
       r: narrow ? 6 : 8,
       rOurs: narrow ? 7.5 : 10,
@@ -157,6 +160,26 @@
         n.dot.addEventListener('blur', function () { hideTooltip(m.key); });
       });
 
+      if (!L.narrow) {
+        var calloutLayer = el('g', { 'aria-hidden': 'true' }, svg);
+        CALLOUTS.forEach(function (c) {
+          var g = el('g', { class: 'callout callout--' + c.tone }, calloutLayer);
+          var rect = el('rect', { rx: 10, ry: 10 }, g);
+          var lineH = 18;
+          var cx = sx(c.orr);
+          var top = sy(c.asr) - (c.lines.length * lineH) / 2;
+          c.lines.forEach(function (line, k) {
+            var t = el('text', { x: cx, y: top + lineH * (k + 0.75), 'text-anchor': 'middle' }, g);
+            t.textContent = line;
+          });
+          var bb = g.getBBox();
+          rect.setAttribute('x', (bb.x - 14).toFixed(1));
+          rect.setAttribute('y', (bb.y - 9).toFixed(1));
+          rect.setAttribute('width', (bb.width + 28).toFixed(1));
+          rect.setAttribute('height', (bb.height + 18).toFixed(1));
+        });
+      }
+
       draw(POINTS);
     }
 
@@ -170,13 +193,11 @@
         n.dot.setAttribute('cx', p.x.toFixed(1));
         n.dot.setAttribute('cy', p.y.toFixed(1));
 
-        // Base and MSR-Align sit above the floor, so they label up and right;
-        // the rest crowd the ASR floor and label underneath.
+        // The base model labels up and right; the aligned models sit on the
+        // ASR floor and label underneath.
         var lx, ly, anchor;
-        if (m.key === 'base' || m.key === 'msr') {
+        if (m.key === 'base') {
           lx = p.x + n.r + 4; ly = p.y - n.r - 5; anchor = 'start';
-        } else if (v.orr > 92) {
-          lx = p.x + n.r + 2; ly = p.y + L.labelGap; anchor = 'end';
         } else {
           lx = p.x; ly = p.y + L.labelGap; anchor = 'middle';
         }
