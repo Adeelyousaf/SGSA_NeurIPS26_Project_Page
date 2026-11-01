@@ -462,8 +462,6 @@
             SGSA changes only how the supervision distribution $q_\phi$ is constructed; the alignment step itself remains the standard SFT objective on $\mathcal{D}_{\mathrm{SGSA}}$. Guidance is applied <strong>only to unsafe inputs</strong>: for safe inputs, the reasoning trace and final answer are sampled directly from the base model to preserve its native behavior.
           </p>
         </div>
-
-        <p class="notation"><strong>Setup.</strong> Same source training inputs as Think-in-Safety (4,055 samples after cleaning; the TIS baseline is retrained on exactly this set). All methods share one SFT recipe: LoRA with rank 8, scaling factor 16 and dropout 0.05 in LlamaFactory, 1.5 epochs, learning rate $1\times10^{-5}$ with cosine schedule and 0.1 warmup, effective batch size 8, bfloat16 on A100 80GB GPUs. Methods differ only in the supervision data.</p>
       </div>
     </div>
   </div>

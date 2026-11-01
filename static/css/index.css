@@ -793,17 +793,6 @@ body {
   padding-top: 0.75rem;
 }
 
-.notation {
-  background: var(--panel);
-  border-left: 4px solid var(--accent-1);
-  border-radius: 6px;
-  color: #48505e;
-  font-size: 0.88rem;
-  line-height: 1.65;
-  margin: 0 0 2rem;
-  padding: 0.85rem 1.1rem;
-}
-
 /* Single-guide variants: what each one fixes, and what it breaks. */
 .variant-grid {
   display: grid;
