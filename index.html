@@ -66,8 +66,7 @@
               <a href="https://adeelyousaf.github.io/">Adeel Yousaf</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <!-- TODO: add Souradip's homepage (souradip-umd.github.io currently returns 404). -->
-              Souradip Chakraborty<sup>2</sup>,
+              <a href="https://souradip-chakraborty.github.io/">Souradip Chakraborty</a><sup>2</sup>,
             </span>
             <span class="author-block">
               <a href="https://www.crcv.ucf.edu/person/mubarak-shah/">Mubarak Shah</a><sup>1</sup>,
@@ -595,9 +594,6 @@
         <div class="content has-text-justified">
           <p>
             Safety alignment should make multimodal reasoning models more selective, not simply more conservative. This paper showed that existing external-teacher alignment methods can reduce the jailbreak attack success rate, but often cause the model to exhibit excessive refusal toward boundary-safe inputs. We introduced SGSA (<em>Self-Guided Safety Alignment</em>), a controlled data-generation framework for safety alignment in multimodal large reasoning models. Our starting point is that supervised safety alignment is fundamentally a choice of supervision distribution: the aligned model inherits not only the safety behavior of this distribution, but also its refusal boundary and failure modes. SGSA constructs safety supervision from the base model itself rather than importing complete reasoning traces from an external teacher. By separately guiding reasoning and final-response generation, SGSA improves the ASR&ndash;ORR trade-off while better preserving the model's native reasoning behavior.
-          </p>
-          <p>
-            <strong>Limitations.</strong> Our approach depends on the quality and coverage of the guidance signals used during data generation. Although SGSA reduces distributional drift relative to external-teacher supervision, it does not provide a formal guarantee that all generated traces are safe, selective, or policy-compliant. Future work should focus on stronger guidance construction, broader policy coverage, human evaluation of reasoning traces, and extensions beyond supervised fine-tuning. Moreover, different models may require model-specific reasoning- and decision-level guidance prompts, making prompt design challenging when extending SGSA to new backbones.
           </p>
         </div>
       </div>
