@@ -310,7 +310,7 @@
         </div>
 
         <figure class="publication-figure">
-          <img src="./static/images/overrefusal-drift.png" alt="Bar charts on LLaVA-CoT. (a) ASR: base 58.1, VLGuard 0.5, MSR-Align 11.7, TIS 2.8, SGSA 1.7. ORR: base 30.7, VLGuard 97.4, MSR-Align 59.6, TIS 71.7, SGSA 55.9. (b) Weight drift from the base model: TIS 45.9, SGSA 37.4. Perplexity of outputs under the base model: TIS 6.5, SGSA 2.8, base 2.6.">
+          <img src="./static/images/overrefusal-drift.png" alt="Bar charts on LLaVA-CoT. (a) ASR: base 58.1, VLGuard 0.5, MSR-Align 11.7, TIS 2.8, SGSA 1.7. ORR: base 30.7, VLGuard 97.4, MSR-Align 59.6, TIS 71.7, SGSA 55.9. (b) Weight drift from the base model: TIS 3.1, SGSA 2.2. Perplexity of outputs under the base model: TIS 6.5, SGSA 2.8, base 2.6.">
           <figcaption class="caption-lead">
             <strong>External supervision costs refusals and drift.</strong> <strong>(a)</strong> VLGuard (VLG), MSR-Align (MSR) and Think-in-Safety (TIS) cut ASR but <span class="bad">inflate ORR</span>. <strong>(b)</strong> TIS also moves further from the base model in <span class="bad">weight space</span>, and its outputs are <span class="bad">far less likely under the base model</span> (perplexity 6.5, against 2.8 for SGSA and 2.6 for the base model's own outputs).
           </figcaption>
