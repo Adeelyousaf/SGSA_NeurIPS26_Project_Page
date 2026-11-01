@@ -82,58 +82,56 @@
             <span class="author-block"><sup>2</sup>University of Maryland</span>
           </div>
 
+          <!-- Link buttons. None are live yet: when a link is ready, uncomment
+               this block, fill in its URL and delete the buttons that are
+               still unavailable.
           <div class="column has-text-centered">
-            <!-- Links marked is-soon are placeholders. When a link goes live,
-                 turn the <a> into a real link: add href, target="_blank" and
-                 rel="noopener noreferrer", then remove is-soon, aria-disabled,
-                 title and the "soon" tag. -->
             <div class="publication-links">
               <span class="link-block">
-                <a class="external-link button is-normal is-rounded is-dark is-soon" aria-disabled="true" title="Coming soon">
+                <a href="NEURIPS_VIRTUAL_PAGE_URL" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener noreferrer">
                   <span class="icon">
                     <i class="fas fa-external-link-alt"></i>
                   </span>
-                  <span>NeurIPS Page</span><span class="soon-tag">soon</span>
+                  <span>NeurIPS Page</span>
                 </a>
               </span>
 
               <span class="link-block">
-                <a class="external-link button is-normal is-rounded is-dark is-soon" aria-disabled="true" title="Coming soon">
+                <a href="https://arxiv.org/abs/ARXIV_ID" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener noreferrer">
                   <span class="icon">
                     <i class="ai ai-arxiv"></i>
                   </span>
-                  <span>arXiv</span><span class="soon-tag">soon</span>
+                  <span>arXiv</span>
                 </a>
               </span>
 
               <span class="link-block">
-                <a class="external-link button is-normal is-rounded is-dark is-soon" aria-disabled="true" title="Coming soon">
+                <a href="https://huggingface.co/datasets/DATASET_ID" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener noreferrer">
                   <span class="icon">
                     <img src="https://huggingface.co/front/assets/huggingface_logo.svg" alt="" style="height:1.1em;" />
                   </span>
-                  <span>Dataset</span><span class="soon-tag">soon</span>
+                  <span>Dataset</span>
                 </a>
               </span>
 
               <span class="link-block">
-                <a class="external-link button is-normal is-rounded is-dark is-soon" aria-disabled="true" title="Coming soon">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener noreferrer">
                   <span class="icon">
                     <i class="fab fa-youtube"></i>
                   </span>
-                  <span>Video</span><span class="soon-tag">soon</span>
+                  <span>Video</span>
                 </a>
               </span>
 
               <span class="link-block">
-                <a class="external-link button is-normal is-rounded is-dark is-soon" aria-disabled="true" title="Coming soon">
+                <a href="./static/pdfs/poster.pdf" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener noreferrer">
                   <span class="icon">
                     <i class="fas fa-file-pdf"></i>
                   </span>
-                  <span>Poster</span><span class="soon-tag">soon</span>
+                  <span>Poster</span>
                 </a>
               </span>
 
-              <!-- Code button, ready to enable:
               <span class="link-block">
                 <a href="https://github.com/Adeelyousaf/SGSA" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener noreferrer">
                   <span class="icon">
@@ -142,9 +140,9 @@
                   <span>Code</span>
                 </a>
               </span>
-              -->
             </div>
           </div>
+          -->
         </div>
       </div>
     </div>
@@ -177,7 +175,7 @@
             <div class="tradeoff-toolbar">
               <span class="tradeoff-label">Safety vs. over-refusal &middot; LLaVA-CoT</span>
             </div>
-            <svg role="group" aria-label="Attack success rate against over-refusal rate on LLaVA-CoT for the base model, VLGuard, MSR-Align, Think-in-Safety and SGSA. Lower is better on both axes."></svg>
+            <svg role="group" aria-label="Attack success rate against over-refusal rate on LLaVA-CoT for the base model, Think-in-Safety and SGSA. Lower is better on both axes."></svg>
             <div class="tradeoff-tooltip" role="status" aria-live="polite"></div>
             <p class="tradeoff-summary">
               SGSA matches Think-in-Safety on safety (<span class="good">1.7%</span> vs. 2.8% ASR) while refusing <span class="good">15.8 points fewer</span> benign inputs (55.9% vs. 71.7% ORR).
@@ -187,7 +185,7 @@
             </noscript>
           </div>
           <figcaption class="caption-lead">
-            <strong>Safer, but far more conservative.</strong> External-teacher alignment drives jailbreak ASR down while <span class="bad">over-refusal climbs</span>; SGSA reaches comparable ASR and <span class="good">refuses far fewer benign inputs</span>.
+            <strong>Safer, but far more conservative.</strong> Think-in-Safety (TIS), trained on external-teacher traces, drives jailbreak ASR down while <span class="bad">over-refusal climbs</span>; SGSA reaches comparable ASR from the same training inputs and <span class="good">refuses far fewer benign inputs</span>.
             <span class="caption-note">ORR averaged over MMSafetyAware and MOSSBench; ASR averaged over FigStep and JailbreakV-28K Mini. Hover or tab to a point for exact values.</span>
           </figcaption>
         </figure>

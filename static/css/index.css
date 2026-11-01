@@ -75,29 +75,6 @@ body {
   color: #ff5c5c;
 }
 
-/* Links that are not live yet (arXiv, dataset, video, poster). The button
-   keeps its place in the row so nothing shifts when the URL is filled in. */
-.publication-links .button.is-soon {
-  cursor: default;
-  opacity: 0.55;
-}
-
-.publication-links .button.is-soon:hover {
-  background-color: #363636;
-  transform: none;
-}
-
-.soon-tag {
-  background: rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  margin-left: 0.5em;
-  padding: 0.18em 0.55em;
-  text-transform: uppercase;
-}
-
 .publication-title {
   font-family: 'Google Sans', sans-serif;
   font-size: 3rem;
@@ -516,6 +493,29 @@ body {
   font-size: 15px;
   font-weight: 800;
   pointer-events: none;
+}
+
+.tradeoff .callout text {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 14px;
+}
+
+.tradeoff .callout--bad rect {
+  fill: #fdeeec;
+  stroke: #e9b4ae;
+}
+
+.tradeoff .callout--bad text {
+  fill: #7a2a22;
+}
+
+.tradeoff .callout--good rect {
+  fill: #e7f5ee;
+  stroke: #a9d9c2;
+}
+
+.tradeoff .callout--good text {
+  fill: #0d5c3a;
 }
 
 .tradeoff svg.is-narrow .tick-label,

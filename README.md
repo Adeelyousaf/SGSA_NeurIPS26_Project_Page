@@ -27,24 +27,22 @@ python3 -m http.server 8000
 
 ## Adding links as they go live
 
-The hero buttons for NeurIPS Page, arXiv, Dataset, Video and Poster are
-placeholders marked `is-soon`. To activate one, edit its `<a>` in `index.html`:
-add `href`, `target="_blank"` and `rel="noopener noreferrer"`, then remove
-`is-soon`, `aria-disabled="true"`, `title="Coming soon"` and the
-`<span class="soon-tag">soon</span>`.
+No link buttons are shown yet. A ready-made row (NeurIPS Page, arXiv, Dataset,
+Video, Poster, Code) sits in a comment under the author list in `index.html`.
+When a link is ready, uncomment that block, fill in its URL and delete the
+buttons that are still unavailable.
 
-- **arXiv**: activate the button, add the arXiv icon link in the footer
-  (commented out there), and extend the BibTeX with
-  `eprint`, `archivePrefix = {arXiv}` and `primaryClass`.
-- **NeurIPS page**: activate the button and point the NeurIPS logo link in the
-  hero (currently the NeurIPS 2026 home page) at the paper's virtual page.
-- **Dataset**: activate the button with the Hugging Face dataset URL.
-- **Video**: activate the button, then uncomment the `VIDEO` section near the
-  end of `index.html` and replace `VIDEO_ID`.
+- **arXiv**: add the button, the arXiv icon link in the footer (commented out
+  there), and extend the BibTeX with `eprint`, `archivePrefix = {arXiv}` and
+  `primaryClass`.
+- **NeurIPS page**: add the button and point the NeurIPS logo link in the hero
+  (currently the NeurIPS 2026 home page) at the paper's virtual page.
+- **Dataset**: add the button with the Hugging Face dataset URL.
+- **Video**: add the button, then uncomment the `VIDEO` section near the end of
+  `index.html` and replace `VIDEO_ID`.
 - **Poster**: put a web-sized PDF at `static/pdfs/poster.pdf` and a JPEG preview
-  at `static/images/poster-preview.jpg`, activate the button, and uncomment the
+  at `static/images/poster-preview.jpg`, add the button, and uncomment the
   `POSTER` section.
-- **Code**: a ready-made button is commented out after the Poster button.
 
 ## Link preview
 
