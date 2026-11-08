@@ -1092,13 +1092,18 @@ pre {
 
 /* ---------- Small screens ---------- */
 
+/* Below the width where the equation cards can break out of the prose
+   column, side-by-side cards are too narrow for the equations; stack them. */
+@media screen and (max-width: 1215px) {
+  .concept-grid,
+  .step-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media screen and (max-width: 1023px) {
   .variant-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .step-grid {
-    grid-template-columns: 1fr;
   }
 }
 
