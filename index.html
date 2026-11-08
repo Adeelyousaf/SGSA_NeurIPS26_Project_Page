@@ -77,7 +77,7 @@
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Central Florida&nbsp;&nbsp;</span>
+            <span class="author-block"><sup>1</sup>Institute of Artificial Intelligence, University of Central Florida&nbsp;&nbsp;</span>
             <span class="author-block"><sup>2</sup>University of Maryland</span>
           </div>
 
@@ -208,7 +208,7 @@
           <div class="contrast-card contrast-card--reveal">
             <h3 class="title is-5">What Over-Refusal Reveals</h3>
             <p>
-              Average over-refusal more than doubles, from 30.7% to <span class="bad">71.7%</span>. VLGuard reaches near-zero ASR by refusing <span class="bad">97.4%</span> of benign, boundary-safe inputs.
+              Average over-refusal more than doubles, from 30.7% to <span class="bad">71.7%</span>. VLGuard reaches near-zero ASR by refusing <span class="bad">93.2%</span> of benign, boundary-safe inputs.
             </p>
           </div>
         </div>
@@ -318,7 +318,7 @@
         <div class="concept-grid">
           <div class="concept-card">
             <h3 class="concept-title">C1 &middot; Severe over-refusal</h3>
-            <p>TIS reduces ASR from 58.1% to 2.8% while increasing average ORR from 30.7% to 71.7%. VLGuard reaches 0.5% ASR at 97.4% ORR. MSR-Align keeps ORR lower (59.6%) but leaves ASR at 11.7%.</p>
+            <p>TIS reduces ASR from 58.1% to 2.8% while increasing average ORR from 30.7% to 71.7%. VLGuard reaches 0.5% ASR at 93.2% ORR. MSR-Align keeps ORR lower (59.6%) but leaves ASR at 11.7%.</p>
             <p class="concept-note">Standard utility benchmarks such as MathVista and VQAv2 do not capture this, which is why over-refusal needs its own evaluation.</p>
           </div>
           <div class="concept-card">
@@ -432,7 +432,7 @@
             <h3 class="concept-title">Initial reasoning</h3>
             <p>Under a lightweight safety context, the base model drafts a reasoning trace:</p>
             <div class="eq">$$z^{(0)} \sim p_{\theta_0}\big(z \mid x, g_{\mathrm{ctx}}(x)\big)$$</div>
-            <p class="concept-note">Revising its own draft beats writing safe reasoning from scratch: dropping this call raises FigStep ASR from 2.0% to 10.8%.</p>
+            <p class="concept-note">Both this call and its safety context matter: on matched training samples, removing the context raises FigStep ASR from 9.6% to 15.5%, and removing the call raises it to 28.8%, with over-refusal rising too.</p>
           </div>
 
           <div class="concept-card">
@@ -515,7 +515,7 @@
               </thead>
               <tbody>
                 <tr><th>Base</th><td>45.1</td><td>16.3</td><td class="avg-col">30.7</td><td>81.2</td><td>35.0</td><td class="avg-col">58.1</td></tr>
-                <tr><th>VLGuard</th><td>99.8</td><td>95.0</td><td class="avg-col">97.4</td><td>0.0</td><td>0.9</td><td class="avg-col">0.5</td></tr>
+                <tr><th>VLGuard</th><td>99.8</td><td>86.7</td><td class="avg-col">93.2</td><td>0.0</td><td>0.9</td><td class="avg-col">0.5</td></tr>
                 <tr><th>MSR-Align</th><td>73.9</td><td>45.3</td><td class="avg-col">59.6</td><td>12.3</td><td>11.0</td><td class="avg-col">11.7</td></tr>
                 <tr><th>Think-in-Safety</th><td>82.0</td><td>61.3</td><td class="avg-col">71.7</td><td>5.2</td><td>0.4</td><td class="avg-col">2.8</td></tr>
                 <tr class="ours-row"><th>SGSA (Ours)</th><td>57.5</td><td>54.3</td><td>55.9<span class="delta delta--good">&minus;15.8</span></td><td>2.0</td><td>1.3</td><td>1.7<span class="delta delta--good">&minus;1.1</span></td></tr>
